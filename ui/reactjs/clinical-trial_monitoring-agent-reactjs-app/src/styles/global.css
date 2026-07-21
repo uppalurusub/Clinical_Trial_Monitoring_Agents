@@ -1,0 +1,1576 @@
+/* ============================================================
+   CLINICAL TRIAL MONITORING AGENT
+   Global Styles
+   ============================================================ */
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #172033;
+  background: #f4f7fb;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --primary: #0e7490;
+  --primary-dark: #155e75;
+  --primary-light: #ecfeff;
+
+  --secondary: #102a43;
+
+  --success: #15803d;
+  --success-bg: #f0fdf4;
+
+  --warning: #b45309;
+  --warning-bg: #fffbeb;
+
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+
+  --info: #0369a1;
+  --info-bg: #f0f9ff;
+
+  --background: #f4f7fb;
+  --surface: #ffffff;
+  --surface-secondary: #f8fafc;
+
+  --text-primary: #172033;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --border: #dce5ef;
+  --border-light: #edf2f7;
+
+  --shadow:
+    0 8px 28px rgba(22, 50, 79, 0.06);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   APPLICATION
+   ============================================================ */
+
+.app-shell {
+  min-height: 100vh;
+}
+
+
+/* ============================================================
+   HERO / HEADER
+   ============================================================ */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 28px max(4vw, 24px);
+
+  background:
+    linear-gradient(
+      120deg,
+      #102a43,
+      #155e75
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 22px rgba(15, 23, 42, 0.15);
+}
+
+.hero-icon {
+  display: grid;
+  place-items: center;
+
+  width: 62px;
+  height: 62px;
+
+  flex-shrink: 0;
+
+  border-radius: 16px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+}
+
+.hero h1 {
+  margin: 2px 0 6px;
+
+  font-size:
+    clamp(25px, 3vw, 40px);
+
+  line-height: 1.2;
+}
+
+.hero p {
+  margin: 0;
+
+  color: #d8edf2;
+}
+
+.eyebrow {
+  font-size: 12px !important;
+
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  color: #67e8f9 !important;
+}
+
+
+/* ============================================================
+   HEALTH STATUS
+   ============================================================ */
+
+.health {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   PAGE LAYOUT
+   ============================================================ */
+
+.layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    340px;
+
+  gap: 24px;
+
+  padding:
+    28px
+    max(4vw, 24px);
+}
+
+.workspace {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.card {
+  background:
+    var(--surface);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-lg);
+
+  padding: 24px;
+
+  box-shadow:
+    var(--shadow);
+}
+
+
+/* ============================================================
+   SECTION TITLE
+   ============================================================ */
+
+.section-title {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+
+  color: var(--primary);
+}
+
+.section-title svg {
+  flex-shrink: 0;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  color:
+    var(--text-primary);
+
+  font-size: 20px;
+
+  line-height: 1.3;
+}
+
+.section-title p {
+  margin: 5px 0 0;
+
+  color:
+    var(--text-muted);
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   MONITORING FORM
+   ============================================================ */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 18px;
+}
+
+label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  color:
+    #334155;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius:
+    9px;
+
+  padding:
+    11px 12px;
+
+  color:
+    var(--text-primary);
+
+  background:
+    #ffffff;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color:
+    #94a3b8;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color:
+    #0891b2;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(6, 182, 212, 0.12);
+}
+
+textarea {
+  min-height: 90px;
+
+  resize: vertical;
+}
+
+.span-2 {
+  grid-column:
+    span 2;
+}
+
+
+/* ============================================================
+   FORM SECTIONS
+   ============================================================ */
+
+.form-section {
+  grid-column:
+    1 / -1;
+
+  margin-top: 12px;
+
+  padding-bottom: 8px;
+
+  border-bottom:
+    1px solid var(--border-light);
+}
+
+.form-section:first-child {
+  margin-top: 0;
+}
+
+.form-section h3 {
+  margin: 0;
+
+  color:
+    var(--primary-dark);
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+.form-section p {
+  margin:
+    4px 0 0;
+
+  color:
+    var(--text-muted);
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   ACTION BUTTONS
+   ============================================================ */
+
+.actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 22px;
+}
+
+button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 0;
+
+  border-radius:
+    9px;
+
+  padding:
+    11px 17px;
+
+  background:
+    var(--primary);
+
+  color:
+    #ffffff;
+
+  font-weight: 800;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background:
+    var(--primary-dark);
+
+  box-shadow:
+    0 5px 14px
+    rgba(14, 116, 144, 0.22);
+}
+
+button:active:not(:disabled) {
+  transform:
+    translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.65;
+
+  cursor: wait;
+}
+
+.secondary {
+  background:
+    #e8eef5;
+
+  color:
+    #334155;
+}
+
+.secondary:hover:not(:disabled) {
+  background:
+    #dbe4ee;
+}
+
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+
+.spin {
+  animation:
+    spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sticky {
+  position: sticky;
+
+  top: 20px;
+}
+
+
+/* ============================================================
+   KEY VALUE DISPLAY
+   ============================================================ */
+
+.kv {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+}
+
+.kv-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(170px, 42%)
+    minmax(0, 1fr);
+
+  gap: 14px;
+
+  align-items: start;
+
+  padding:
+    10px 0;
+
+  border-bottom:
+    1px solid var(--border-light);
+}
+
+.kv-row:last-child {
+  border-bottom: 0;
+}
+
+.kv-row span {
+  color:
+    var(--text-muted);
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.kv-row strong {
+  color:
+    var(--text-primary);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/* ============================================================
+   SIDEBAR TITLES
+   ============================================================ */
+
+.mini-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin:
+    22px 0 10px;
+
+  color:
+    var(--secondary);
+
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   AGENT CHIPS
+   ============================================================ */
+
+.chips {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.chips span {
+  padding:
+    6px 9px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--primary-light);
+
+  color:
+    var(--primary);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+}
+
+
+/* ============================================================
+   CAPABILITIES
+   ============================================================ */
+
+.capabilities {
+  margin:
+    0;
+
+  padding-left:
+    20px;
+
+  color:
+    var(--text-secondary);
+
+  line-height:
+    1.8;
+
+  font-size:
+    13px;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.empty-state {
+  text-align:
+    center;
+
+  padding:
+    50px 24px;
+
+  color:
+    var(--text-muted);
+
+  border:
+    2px dashed #cbd5e1;
+
+  border-radius:
+    var(--radius-lg);
+
+  background:
+    rgba(255, 255, 255, 0.5);
+}
+
+.empty-state svg {
+  color:
+    var(--primary);
+}
+
+.empty-state h3 {
+  margin:
+    12px 0 6px;
+
+  color:
+    #334155;
+}
+
+.empty-state p {
+  margin:
+    0 auto;
+
+  max-width:
+    520px;
+
+  line-height:
+    1.6;
+}
+
+
+/* ============================================================
+   MONITORING RESULTS
+   ============================================================ */
+
+.results {
+  overflow:
+    hidden;
+}
+
+.result-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    16px;
+}
+
+.result-card {
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  padding:
+    18px;
+
+  background:
+    var(--surface-secondary);
+
+  overflow:
+    auto;
+}
+
+.result-card h3 {
+  margin:
+    0 0 14px;
+
+  color:
+    var(--primary-dark);
+
+  font-size:
+    16px;
+}
+
+.result-card p {
+  color:
+    var(--text-secondary);
+
+  line-height:
+    1.65;
+}
+
+.result-card ul {
+  margin:
+    0;
+
+  padding-left:
+    20px;
+}
+
+.result-card li {
+  margin:
+    8px 0;
+
+  color:
+    var(--text-secondary);
+
+  line-height:
+    1.5;
+}
+
+.result-card pre {
+  margin:
+    0;
+
+  white-space:
+    pre-wrap;
+
+  overflow-wrap:
+    anywhere;
+
+  font:
+    12px / 1.5
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+}
+
+
+/* ============================================================
+   MONITORING METRICS
+   ============================================================ */
+
+.metrics-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    14px;
+}
+
+.metric-card {
+  padding:
+    18px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #ffffff;
+
+  text-align:
+    center;
+}
+
+.metric-label {
+  display:
+    block;
+
+  min-height:
+    34px;
+
+  color:
+    var(--text-muted);
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+}
+
+.metric-value {
+  display:
+    block;
+
+  margin-top:
+    8px;
+
+  color:
+    var(--primary-dark);
+
+  font-size:
+    25px;
+
+  font-weight:
+    800;
+}
+
+
+/* ============================================================
+   RISK LEVELS
+   ============================================================ */
+
+.risk-low {
+  color:
+    var(--success);
+}
+
+.risk-medium {
+  color:
+    var(--warning);
+}
+
+.risk-high,
+.risk-critical {
+  color:
+    var(--danger);
+}
+
+.badge {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    5px 10px;
+
+  border-radius:
+    999px;
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+}
+
+.badge-low {
+  color:
+    var(--success);
+
+  background:
+    var(--success-bg);
+}
+
+.badge-medium {
+  color:
+    var(--warning);
+
+  background:
+    var(--warning-bg);
+}
+
+.badge-high,
+.badge-critical {
+  color:
+    var(--danger);
+
+  background:
+    var(--danger-bg);
+}
+
+
+/* ============================================================
+   RECOMMENDATIONS
+   ============================================================ */
+
+.recommendations {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    12px;
+}
+
+.recommendation-card {
+  display:
+    grid;
+
+  grid-template-columns:
+    130px
+    90px
+    minmax(0, 1fr);
+
+  gap:
+    14px;
+
+  align-items:
+    center;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #ffffff;
+}
+
+.recommendation-category {
+  color:
+    var(--primary-dark);
+
+  font-weight:
+    800;
+}
+
+.recommendation-text {
+  color:
+    var(--text-secondary);
+
+  line-height:
+    1.5;
+}
+
+
+/* ============================================================
+   AGENT ANALYSIS
+   ============================================================ */
+
+.agent-analysis {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    16px;
+}
+
+.agent-card {
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #ffffff;
+
+  overflow:
+    hidden;
+}
+
+.agent-header {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    14px 18px;
+
+  background:
+    var(--primary-light);
+
+  color:
+    var(--primary-dark);
+
+  font-weight:
+    800;
+}
+
+.agent-content {
+  padding:
+    18px;
+
+  color:
+    var(--text-secondary);
+
+  line-height:
+    1.7;
+}
+
+.agent-content p {
+  margin:
+    0 0 12px;
+}
+
+.agent-content ul,
+.agent-content ol {
+  padding-left:
+    22px;
+}
+
+
+/* ============================================================
+   ERROR BANNER
+   ============================================================ */
+
+.error {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid #fecaca;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--danger-bg);
+
+  color:
+    var(--danger);
+
+  font-weight:
+    700;
+}
+
+
+/* ============================================================
+   SUCCESS BANNER
+   ============================================================ */
+
+.success-banner {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid #bbf7d0;
+
+  border-radius:
+    10px;
+
+  background:
+    var(--success-bg);
+
+  color:
+    var(--success);
+
+  font-weight:
+    700;
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (
+  max-width: 1200px
+) {
+
+  .metrics-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+@media (
+  max-width: 1000px
+) {
+
+  .layout {
+    grid-template-columns:
+      1fr;
+  }
+
+  .sticky {
+    position:
+      static;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (
+  max-width: 680px
+) {
+
+  .hero {
+    align-items:
+      flex-start;
+
+    flex-wrap:
+      wrap;
+
+    padding:
+      22px 18px;
+  }
+
+  .health {
+    margin-left:
+      0;
+  }
+
+  .layout {
+    padding:
+      18px;
+  }
+
+  .card {
+    padding:
+      18px;
+  }
+
+  .form-grid,
+  .result-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .span-2 {
+    grid-column:
+      span 1;
+  }
+
+  .metrics-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .kv-row {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      3px;
+  }
+
+  .recommendation-card {
+    grid-template-columns:
+      1fr;
+  }
+
+  .actions {
+    flex-direction:
+      column-reverse;
+  }
+
+  button {
+    width:
+      100%;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - SMALL MOBILE
+   ============================================================ */
+
+@media (
+  max-width: 420px
+) {
+
+  .metrics-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .hero-icon {
+    width:
+      52px;
+
+    height:
+      52px;
+  }
+
+  .hero h1 {
+    font-size:
+      24px;
+  }
+
+}
+
+
+/* Analyze-only application layout */
+.single-column-layout {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   AUTOGEN AGENT SUMMARY - ALIGNMENT FIX
+   Keep this section at the END of global.css
+   ============================================================ */
+
+.agent-card,
+.agent-summary-section,
+.agent-markdown {
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   MARKDOWN CONTENT
+   ============================================================ */
+
+.agent-card .agent-markdown {
+  display: block;
+
+  width: 100%;
+
+  padding: 24px 30px 30px;
+
+  box-sizing: border-box;
+
+  color: #0f172a;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   PARAGRAPHS
+   ============================================================ */
+
+.agent-card .agent-markdown p {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 16px;
+
+  padding: 0;
+
+  color: #0f172a;
+
+  line-height: 1.7;
+
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   HEADINGS
+   ============================================================ */
+
+.agent-card .agent-markdown h1,
+.agent-card .agent-markdown h2,
+.agent-card .agent-markdown h3,
+.agent-card .agent-markdown h4,
+.agent-card .agent-markdown h5,
+.agent-card .agent-markdown h6 {
+  display: block;
+
+  width: 100%;
+
+  margin: 22px 0 12px;
+
+  padding: 0;
+
+  color: #075985;
+
+  font-weight: 800;
+  line-height: 1.4;
+
+  text-align: left !important;
+}
+
+
+.agent-card .agent-markdown h1:first-child,
+.agent-card .agent-markdown h2:first-child,
+.agent-card .agent-markdown h3:first-child,
+.agent-card .agent-markdown h4:first-child,
+.agent-card .agent-markdown h5:first-child,
+.agent-card .agent-markdown h6:first-child {
+  margin-top: 0;
+}
+
+
+/* ============================================================
+   STRONG / BOLD
+   ============================================================ */
+
+.agent-card .agent-markdown strong {
+  color: #0f172a;
+
+  font-weight: 800;
+
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   ORDERED LIST
+   ============================================================ */
+
+.agent-card .agent-markdown ol {
+  display: block;
+
+  width: 100%;
+
+  margin: 12px 0 20px;
+
+  padding-left: 32px;
+
+  box-sizing: border-box;
+
+  text-align: left !important;
+}
+
+
+.agent-card .agent-markdown ol > li {
+  display: list-item;
+
+  margin: 0 0 12px;
+
+  padding-left: 6px;
+
+  color: #0f172a;
+
+  line-height: 1.65;
+
+  text-align: left !important;
+}
+
+
+.agent-card .agent-markdown ol > li::marker {
+  color: #075985;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   UNORDERED LIST
+   ============================================================ */
+
+.agent-card .agent-markdown ul {
+  display: block;
+
+  width: 100%;
+
+  margin: 12px 0 20px;
+
+  padding-left: 30px;
+
+  box-sizing: border-box;
+
+  text-align: left !important;
+}
+
+
+.agent-card .agent-markdown ul > li {
+  display: list-item;
+
+  margin: 0 0 10px;
+
+  padding-left: 5px;
+
+  color: #0f172a;
+
+  line-height: 1.65;
+
+  text-align: left !important;
+}
+
+
+.agent-card .agent-markdown ul > li::marker {
+  color: #075985;
+}
+
+
+/* ============================================================
+   PARAGRAPHS INSIDE LIST ITEMS
+   ============================================================ */
+
+.agent-card .agent-markdown li p {
+  display: inline;
+
+  width: auto;
+
+  margin: 0;
+
+  padding: 0;
+
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   NESTED LISTS
+   ============================================================ */
+
+.agent-card .agent-markdown li > ul,
+.agent-card .agent-markdown li > ol {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+
+.agent-card .agent-markdown blockquote {
+  width: 100%;
+
+  margin: 18px 0;
+
+  padding: 14px 18px;
+
+  box-sizing: border-box;
+
+  border-left: 4px solid #0e7490;
+
+  border-radius: 0 8px 8px 0;
+
+  background: #f0f9ff;
+
+  text-align: left !important;
+}
+
+
+.agent-card .agent-markdown blockquote p {
+  margin: 0;
+
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   REMOVE CENTER ALIGNMENT FROM CHILDREN
+   ============================================================ */
+
+.agent-card .agent-markdown > *,
+.agent-card .agent-markdown li,
+.agent-card .agent-markdown li > *,
+.agent-card .agent-markdown div,
+.agent-card .agent-markdown span {
+  text-align: left !important;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 680px) {
+
+  .agent-card .agent-markdown {
+    padding: 18px;
+
+    font-size: 14px;
+  }
+
+
+  .agent-card .agent-markdown ol {
+    padding-left: 26px;
+  }
+
+
+  .agent-card .agent-markdown ul {
+    padding-left: 24px;
+  }
+
+}

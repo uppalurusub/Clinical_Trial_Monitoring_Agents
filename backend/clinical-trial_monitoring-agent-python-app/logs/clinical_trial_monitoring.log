@@ -1,0 +1,176 @@
+2026-07-14 10:55:43.734 | INFO     | main:lifespan:58 - Starting Clinical Trial Monitoring Agent...
+2026-07-14 10:55:43.734 | SUCCESS  | main:lifespan:62 - Application startup completed.
+2026-07-14 11:03:49.964 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:03:49.964 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:03:49.964 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-14 11:03:49.972 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-14 11:03:49.972 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-14 11:03:52.526 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-14 11:03:52.526 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-14 11:03:52.527 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-14 11:03:52.527 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-14 11:03:52.527 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-14 11:03:52.528 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-14 11:03:52.528 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-14 11:03:52.528 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-14 11:03:52.528 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-14 11:04:10.270 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-14 11:04:34.168 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-14 11:04:47.032 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-14 11:04:47.034 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:04:49.158 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:04:49.158 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:11:18.215 | INFO     | main:lifespan:58 - Starting Clinical Trial Monitoring Agent...
+2026-07-14 11:11:18.215 | SUCCESS  | main:lifespan:62 - Application startup completed.
+2026-07-14 11:11:18.330 | INFO     | main:lifespan:68 - Shutting down Clinical Trial Monitoring Agent...
+2026-07-14 11:11:18.331 | SUCCESS  | main:lifespan:72 - Application shutdown completed.
+2026-07-14 11:11:33.847 | INFO     | main:lifespan:58 - Starting Clinical Trial Monitoring Agent...
+2026-07-14 11:11:33.847 | SUCCESS  | main:lifespan:62 - Application startup completed.
+2026-07-14 11:12:47.388 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:12:47.388 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:12:47.388 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-14 11:12:47.388 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-14 11:12:47.388 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-14 11:12:49.744 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-14 11:12:49.744 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-14 11:12:49.744 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-14 11:12:49.745 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-14 11:12:49.745 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-14 11:12:49.746 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-14 11:12:49.746 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-14 11:12:49.747 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-14 11:12:49.747 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-14 11:13:15.083 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-14 11:13:26.563 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-14 11:13:47.437 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-14 11:13:47.438 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:13:49.750 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:13:49.751 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:16:53.931 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:16:53.933 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:16:53.933 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-14 11:16:53.933 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-14 11:16:53.933 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-14 11:16:56.056 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-14 11:16:56.056 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-14 11:16:56.056 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-14 11:16:56.056 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-14 11:16:56.056 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-14 11:16:56.056 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-14 11:16:56.072 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-14 11:16:56.073 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-14 11:16:56.073 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-14 11:17:45.722 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-14 11:17:48.010 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-14 11:18:07.353 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-14 11:18:07.354 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:18:09.621 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:18:09.621 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:44:30.958 | INFO     | routers.monitoring_router:health_check:106 - Health check request received.
+2026-07-14 11:44:30.958 | INFO     | services.monitoring_service:health_check:170 - Monitoring Service Health Check Started.
+2026-07-14 11:44:30.958 | SUCCESS  | routers.monitoring_router:health_check:115 - Health check completed.
+2026-07-14 11:44:30.962 | INFO     | routers.monitoring_router:service_info:144 - Service info requested.
+2026-07-14 11:44:40.637 | INFO     | routers.monitoring_router:health_check:106 - Health check request received.
+2026-07-14 11:44:40.637 | INFO     | services.monitoring_service:health_check:170 - Monitoring Service Health Check Started.
+2026-07-14 11:44:40.637 | SUCCESS  | routers.monitoring_router:health_check:115 - Health check completed.
+2026-07-14 11:44:40.641 | INFO     | routers.monitoring_router:service_info:144 - Service info requested.
+2026-07-14 11:44:45.599 | INFO     | routers.monitoring_router:health_check:106 - Health check request received.
+2026-07-14 11:44:45.599 | INFO     | services.monitoring_service:health_check:170 - Monitoring Service Health Check Started.
+2026-07-14 11:44:45.599 | SUCCESS  | routers.monitoring_router:health_check:115 - Health check completed.
+2026-07-14 11:44:45.599 | INFO     | routers.monitoring_router:service_info:144 - Service info requested.
+2026-07-14 11:44:45.599 | INFO     | routers.monitoring_router:health_check:106 - Health check request received.
+2026-07-14 11:44:45.599 | INFO     | services.monitoring_service:health_check:170 - Monitoring Service Health Check Started.
+2026-07-14 11:44:45.599 | SUCCESS  | routers.monitoring_router:health_check:115 - Health check completed.
+2026-07-14 11:44:45.599 | INFO     | routers.monitoring_router:service_info:144 - Service info requested.
+2026-07-14 11:44:45.604 | INFO     | routers.monitoring_router:health_check:106 - Health check request received.
+2026-07-14 11:44:45.604 | INFO     | services.monitoring_service:health_check:170 - Monitoring Service Health Check Started.
+2026-07-14 11:44:45.604 | SUCCESS  | routers.monitoring_router:health_check:115 - Health check completed.
+2026-07-14 11:44:45.607 | INFO     | routers.monitoring_router:service_info:144 - Service info requested.
+2026-07-14 11:53:51.509 | INFO     | main:lifespan:68 - Shutting down Clinical Trial Monitoring Agent...
+2026-07-14 11:53:51.509 | SUCCESS  | main:lifespan:72 - Application shutdown completed.
+2026-07-14 11:53:58.162 | INFO     | main:lifespan:59 - Starting Clinical Trial Monitoring Agent...
+2026-07-14 11:53:58.162 | SUCCESS  | main:lifespan:63 - Application startup completed.
+2026-07-14 11:54:14.367 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:54:14.367 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:54:14.367 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-14 11:54:14.367 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-14 11:54:14.367 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-14 11:54:16.876 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-14 11:54:16.876 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-14 11:54:16.876 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-14 11:54:16.876 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-14 11:54:16.876 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-14 11:54:16.876 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-14 11:54:16.876 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-14 11:54:16.892 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-14 11:54:16.893 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-14 11:54:34.448 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-14 11:54:50.071 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-14 11:55:08.877 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-14 11:55:08.877 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:55:11.063 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:55:11.063 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 11:58:40.131 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:58:40.131 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-14 11:58:40.131 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-14 11:58:40.133 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-14 11:58:40.133 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-14 11:58:42.386 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-14 11:58:42.386 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-14 11:58:42.386 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-14 11:58:42.386 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-14 11:58:42.386 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-14 11:58:42.386 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-14 11:58:42.386 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-14 11:58:42.386 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-14 11:58:42.386 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-14 11:59:27.172 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-14 11:59:31.502 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-14 12:00:13.004 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-14 12:00:13.004 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 12:00:15.336 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-14 12:00:15.336 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:21:16.727 | INFO     | main:lifespan:59 - Starting Clinical Trial Monitoring Agent...
+2026-07-21 17:21:16.727 | SUCCESS  | main:lifespan:63 - Application startup completed.
+2026-07-21 17:22:39.714 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-21 17:22:39.714 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-21 17:22:39.714 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-21 17:22:39.714 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-21 17:22:39.714 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-21 17:22:42.126 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-21 17:22:42.126 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-21 17:22:42.127 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-21 17:22:42.127 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-21 17:22:42.127 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-21 17:22:42.127 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-21 17:22:42.127 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-21 17:22:42.127 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-21 17:22:42.128 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-21 17:23:06.307 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-21 17:23:17.334 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-21 17:23:32.856 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-21 17:23:32.872 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:23:35.120 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:23:35.120 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:25:28.992 | INFO     | routers.monitoring_router:analyze_monitoring:54 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-21 17:25:28.992 | INFO     | services.monitoring_service:analyze_monitoring:65 - Received monitoring request for Study=STUDY-001, Site=SITE-101
+2026-07-21 17:25:28.993 | INFO     | services.monitoring_service:_validate_request:198 - Validating monitoring request...
+2026-07-21 17:25:28.994 | SUCCESS  | services.monitoring_service:_validate_request:279 - Monitoring request validation passed.
+2026-07-21 17:25:28.995 | INFO     | services.monitoring_service:analyze_monitoring:79 - Request validation completed.
+2026-07-21 17:25:31.177 | INFO     | implementation.monitoring_impl:analyze:39 - Starting monitoring analysis for Site=SITE-101
+2026-07-21 17:25:31.177 | INFO     | implementation.monitoring_impl:analyze:104 - Monitoring metrics calculated successfully.
+2026-07-21 17:25:31.177 | INFO     | implementation.monitoring_impl:analyze:120 - Risk Score=100, Risk Level=High
+2026-07-21 17:25:31.177 | INFO     | agents.monitoring_agents:monitoring_agent:49 - Creating Monitoring Agent...
+2026-07-21 17:25:31.177 | SUCCESS  | agents.monitoring_agents:monitoring_agent:77 - Monitoring Agent Created Successfully
+2026-07-21 17:25:31.177 | INFO     | agents.monitoring_agents:risk_agent:101 - Creating Risk Agent...
+2026-07-21 17:25:31.185 | SUCCESS  | agents.monitoring_agents:risk_agent:139 - Risk Agent Created Successfully
+2026-07-21 17:25:31.185 | INFO     | agents.monitoring_agents:compliance_agent:163 - Creating Compliance Agent...
+2026-07-21 17:25:31.185 | SUCCESS  | agents.monitoring_agents:compliance_agent:198 - Compliance Agent Created Successfully
+2026-07-21 17:25:52.843 | INFO     | implementation.monitoring_impl:analyze:172 - Monitoring Agent completed.
+2026-07-21 17:26:07.911 | INFO     | implementation.monitoring_impl:analyze:212 - Risk Agent completed.
+2026-07-21 17:26:22.361 | INFO     | implementation.monitoring_impl:analyze:251 - Compliance Agent completed.
+2026-07-21 17:26:22.361 | SUCCESS  | implementation.monitoring_impl:analyze:352 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:26:24.634 | SUCCESS  | services.monitoring_service:analyze_monitoring:140 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:26:24.634 | SUCCESS  | routers.monitoring_router:analyze_monitoring:65 - Monitoring analysis completed for Site=SITE-101
+2026-07-21 17:27:21.424 | INFO     | main:lifespan:69 - Shutting down Clinical Trial Monitoring Agent...
+2026-07-21 17:27:21.424 | SUCCESS  | main:lifespan:73 - Application shutdown completed.
