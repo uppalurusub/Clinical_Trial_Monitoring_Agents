@@ -19,6 +19,9 @@ logger.info(
     f"Using OpenRouter Model: {model}"
 )
 
+input_rate = os.getenv("llm_input_price_per_million")
+output_rate = os.getenv("llm_output_price_per_million")
+
 def get_model_client():
 
     

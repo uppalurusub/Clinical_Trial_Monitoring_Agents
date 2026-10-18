@@ -13,8 +13,14 @@ from models.response_model import (
 )
 
 import mlflow
-from datetime import datetime
+
 import time
+import os
+from config.llm_config import input_rate,output_rate
+
+from datetime import datetime, timezone
+
+from utils.langsmith_usage_tracker import log_monitoring_usage
 
 mlflow.set_tracking_uri(
     "http://localhost:5000"
@@ -60,7 +66,9 @@ class MonitoringService:
         try:
 
             start_time = datetime.now()
+            start_time_time = time.perf_counter()
             start_ts = time.time()
+
 
             logger.info(
                 f"Received monitoring request "
@@ -98,11 +106,13 @@ class MonitoringService:
                     "input_text",
                     request
                 )
-                response = await (
+                """ response = await (
                     self.monitoring_impl.analyze(
                         request
                     )
-                )
+                ) """
+                response, usage = await self.monitoring_impl.analyze(request)
+
 
                 mlflow.log_param(
                     "response",
@@ -131,10 +141,93 @@ class MonitoringService:
                     end_time.strftime("%Y-%m-%d %H:%M:%S")
                 )
 
-                mlflow.log_metric(
-                    "execution_time_seconds",
-                    round(execution_time, 4)
+                input_tokens = int(usage["input_tokens"])
+                output_tokens = int(usage["output_tokens"])
+                total_tokens = int(usage["total_tokens"])
+
+                # Read model-specific OpenRouter rates (USD per million tokens).
+                input_rate = os.getenv("llm_input_price_per_million")
+                output_rate = os.getenv("llm_output_price_per_million")
+
+                cost_available = input_rate is not None and output_rate is not None
+                model_name = os.getenv("model", "unknown")
+                if usage["usage_found"]:
+                    run_id = log_monitoring_usage(
+                        usage=usage,
+                        model_name=model_name,
+                        input_rate_per_1m=input_rate,
+                        output_rate_per_1m=output_rate,
+                        start_time=start_time,
+                        end_time=end_time,
+                    )
+                    logger.info("LangSmith usage run ID: {}", run_id)
+                else:
+                    logger.warning(
+                        "AutoGen did not expose token usage; "
+                        "skipping cost calculation."
+                    )
+
+
+                if cost_available:
+                    input_cost = input_tokens * float(input_rate) / 1_000_000
+                    output_cost = output_tokens * float(output_rate) / 1_000_000
+                    total_cost = input_cost + output_cost
+                    cost_source = "configured_rate_estimate"
+                else:
+                    input_cost = 0.0
+                    output_cost = 0.0
+                    total_cost = 0.0
+                    cost_source = "unavailable_rate_not_configured"
+
+                # All MLflow metrics must be numeric.
+                metrics = {
+                    "input_tokens": float(input_tokens),
+                    "output_tokens": float(output_tokens),
+                    "total_tokens": float(total_tokens),
+                    "input_cost": input_cost,
+                    "output_cost": output_cost,
+                    "total_cost": total_cost,
+                    "execution_time_seconds": round(execution_time, 4)
+                }
+
+                mlflow.log_metrics(metrics)
+
+                # Store string values as tags, not metrics.
+                mlflow.set_tag("llm_provider", "openrouter")
+                mlflow.set_tag("llm_model", os.getenv("model", "unknown"))
+                mlflow.set_tag("cost_source", cost_source)
+                mlflow.set_tag(
+                    "usage_available",
+                    str(usage["usage_found"]).lower(),
                 )
+                mlflow.set_tag("cost_available", str(cost_available).lower())
+
+                logger.info(
+                    "LLM usage: input_tokens={}, output_tokens={}, "
+                    "total_tokens={}, input_cost={}, output_cost={}, "
+                    "total_cost={}, usage_found={}, cost_source={}",
+                    input_tokens,
+                    output_tokens,
+                    total_tokens,
+                    input_cost,
+                    output_cost,
+                    total_cost,
+                    usage["usage_found"],
+                    cost_source,
+                )
+                
+                """ # Record token counts as metrics.
+                metrics = {
+                    "execution_time_seconds": round(execution_time, 4)
+                }
+
+                
+
+                mlflow.log_metrics(metrics) """
+
+                
+
+                
 
 
             logger.success(

@@ -14,6 +14,38 @@ from models.response_model import (
     MonitoringRecommendation
 )
 
+def extract_autogen_usage(task_result):
+        """Extract token usage from an AutoGen TaskResult."""
+        input_tokens = 0
+        output_tokens = 0
+        usage_found = False
+
+        for message in getattr(task_result, "messages", []):
+            usage = getattr(message, "models_usage", None)
+
+            if usage is None:
+                continue
+
+            prompt_tokens = getattr(
+                usage, "prompt_tokens", 0
+            ) or 0
+
+            completion_tokens = getattr(
+                usage, "completion_tokens", 0
+            ) or 0
+
+            input_tokens += int(prompt_tokens)
+            output_tokens += int(completion_tokens)
+            usage_found = True
+
+        return {
+            "input_tokens": input_tokens,
+            "output_tokens": output_tokens,
+            "total_tokens": input_tokens + output_tokens,
+            "usage_found": usage_found,
+        }
+
+
 
 class MonitoringImplementation:
 
@@ -34,7 +66,9 @@ class MonitoringImplementation:
         request: MonitoringRequest
     ) -> MonitoringResponse:
 
+
         try:
+            task_results = []
 
             logger.info(
                 f"Starting monitoring analysis "
@@ -164,6 +198,7 @@ class MonitoringImplementation:
             monitoring_result = await monitoring_agent.run(
                 task=monitoring_prompt
             )
+            task_results.append(monitoring_result)
 
             monitoring_summary = (
                 monitoring_result.messages[-1].content
@@ -204,6 +239,7 @@ class MonitoringImplementation:
             risk_result = await risk_agent.run(
                 task=risk_prompt
             )
+            task_results.append(risk_result)
 
             risk_summary = (
                 risk_result.messages[-1].content
@@ -243,6 +279,7 @@ class MonitoringImplementation:
                     task=compliance_prompt
                 )
             )
+            task_results.append(compliance_result)
 
             compliance_summary = (
                 compliance_result.messages[-1].content
@@ -354,7 +391,7 @@ class MonitoringImplementation:
                 f"for Site={request.site_id}"
             )
 
-            return MonitoringResponse(
+            response = MonitoringResponse(
                 success=True,
                 study_id=request.study_id,
                 site_id=request.site_id,
@@ -368,6 +405,29 @@ class MonitoringImplementation:
                 recommendations=recommendations,
                 message="Clinical Trial Monitoring Analysis Completed Successfully."
             )
+
+            usage_totals = {
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "total_tokens": 0,
+                "usage_found": False,
+            }
+
+            for task_result in task_results:
+                usage = extract_autogen_usage(task_result)
+
+                usage_totals["input_tokens"] += usage["input_tokens"]
+                usage_totals["output_tokens"] += usage["output_tokens"]
+                usage_totals["usage_found"] = (
+                    usage_totals["usage_found"] or usage["usage_found"]
+                )
+
+            usage_totals["total_tokens"] = (
+                usage_totals["input_tokens"]
+                + usage_totals["output_tokens"]
+            )
+
+            return response, usage_totals
 
         except Exception as ex:
 
@@ -534,3 +594,6 @@ class MonitoringImplementation:
             )
 
         return recommendations
+
+    
+    
