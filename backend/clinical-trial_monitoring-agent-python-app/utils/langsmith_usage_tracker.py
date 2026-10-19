@@ -19,12 +19,13 @@ PROJECT_NAME = os.getenv(
 
 
 @traceable(
-    name="clinical_trial_monitoring_usage",
+    name="clinical_trial_monitoring",
     run_type="llm",
     project_name=PROJECT_NAME,
-    metadata={"ls_provider": "openrouter"},
+    #metadata={"ls_provider": "openrouter"},
 )
 def _create_usage_run(
+    workflow: str,
     usage_metadata: dict[str, int | float],
     model_name: str,
     error: str | None = None,
@@ -46,7 +47,7 @@ def _create_usage_run(
 
     return {
         "status": "failed" if error else "completed",
-        "model_name": model_name,
+        "workflow": "clinical_trial_monitoring",
         "usage_metadata": usage_metadata,
         "error": error,
     }
@@ -105,6 +106,7 @@ def log_monitoring_usage(
     )
 
     result = _create_usage_run(
+        workflow="clinical_trial_monitoring",
         usage_metadata=usage_metadata,
         model_name=model_name,
         error=error,
