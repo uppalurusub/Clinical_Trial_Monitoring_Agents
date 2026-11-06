@@ -9,12 +9,12 @@ from fastapi import (
 
 from fastapi.responses import JSONResponse
 
-from utils.logger import logger
+from app.config.settings import settings
+logger = settings.get_logger()
 
-from routers.monitoring_router import (
+from app.routers.monitoring_router import (
     router as monitoring_router
 )
-from fastapi.middleware.cors import CORSMiddleware
 
 
 # =====================================================
@@ -99,17 +99,6 @@ Features:
 """,
     version="1.0.0",
     lifespan=lifespan
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
 )
 
 

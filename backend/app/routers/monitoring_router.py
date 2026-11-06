@@ -4,17 +4,18 @@ from fastapi import (
     status
 )
 
-from utils.logger import logger
+from app.config.settings import settings
+logger = settings.get_logger()
 
-from services.monitoring_service import (
+from app.services.monitoring_service import (
     MonitoringService
 )
 
-from models.request_model import (
+from app.models.request_model import (
     MonitoringRequest
 )
 
-from models.response_model import (
+from app.models.response_model import (
     MonitoringResponse
 )
 
