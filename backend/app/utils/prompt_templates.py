@@ -1,4 +1,5 @@
-from app.utils.logger import logger
+from app.config.settings import settings
+logger = settings.get_logger()
 
 
 class PromptTemplates:

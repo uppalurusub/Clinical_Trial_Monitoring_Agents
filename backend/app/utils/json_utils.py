@@ -1,7 +1,8 @@
 import json
 import re
 
-from loguru import logger
+from app.config.settings import settings
+logger = settings.get_logger()
 
 
 def extract_json(content: str):
