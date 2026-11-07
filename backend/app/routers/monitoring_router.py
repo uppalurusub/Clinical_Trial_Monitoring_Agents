@@ -11,11 +11,11 @@ from app.services.monitoring_service import (
     MonitoringService
 )
 
-from app.models.request_model import (
+from app.schemas.request_model import (
     MonitoringRequest
 )
 
-from app.models.response_model import (
+from app.schemas.response_model import (
     MonitoringResponse
 )
 

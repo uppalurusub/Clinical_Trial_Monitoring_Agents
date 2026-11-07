@@ -3,9 +3,9 @@ logger = settings.get_logger()
 
 from app.agents.monitoring_agents import MonitoringAgents
 
-from app.models.request_model import MonitoringRequest
+from app.schemas.request_model import MonitoringRequest
 
-from app.models.response_model import (
+from app.schemas.response_model import (
     MonitoringResponse,
     MonitoringMetrics,
     RiskAssessment,

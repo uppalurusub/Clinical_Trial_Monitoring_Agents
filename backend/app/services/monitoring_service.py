@@ -10,8 +10,8 @@ from app.config.settings import (
     OUTPUT_PRICE_PER_1M,
 )
 from app.implementation.monitoring_impl import MonitoringImplementation
-from app.models.request_model import MonitoringRequest
-from app.models.response_model import MonitoringResponse
+from app.schemas.request_model import MonitoringRequest
+from app.schemas.response_model import MonitoringResponse
 
 logger = settings.get_logger()
 

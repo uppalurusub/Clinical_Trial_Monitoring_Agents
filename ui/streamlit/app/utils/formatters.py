@@ -1,13 +1,24 @@
-def format_percent(value, decimals: int = 2) -> str:
+def format_currency(value):
     try:
-        return f"{float(value):.{decimals}f}%"
+        return f"${float(value or 0):,.2f}"
     except (TypeError, ValueError):
-        return "-"
+        return "$0.00"
 
 
-def format_value(value, default: str = "-"):
-    return default if value is None or value == "" else value
+def format_score(value, decimals=2):
+    try:
+        return f"{float(value or 0):.{decimals}f}"
+    except (TypeError, ValueError):
+        return f"{0:.{decimals}f}"
 
 
-def yes_no(value) -> str:
-    return "Yes" if bool(value) else "No"
+def format_seconds(value):
+    return f"{format_score(value)} sec"
+
+
+def yes_no(value):
+    return "Yes" if value else "No"
+
+
+def value_or_na(value):
+    return value if value not in (None, "") else "N/A"

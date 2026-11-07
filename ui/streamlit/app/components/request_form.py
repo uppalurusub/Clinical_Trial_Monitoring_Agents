@@ -1,119 +1,164 @@
 import streamlit as st
 
 
-def render_request_form() -> dict:
-    st.subheader("Study Information")
-    col1, col2 = st.columns(2)
+def render_request_form():
+    with st.form("claim_form"):
+        st.header("Patient Information")
+        col1, col2 = st.columns(2)
 
-    with col1:
-        study_id = st.text_input("Study ID", "STUDY-001")
-        study_name = st.text_input("Study Name", "Phase III Diabetes Study")
-        country = st.text_input("Country", "India")
+        with col1:
+            claim_id = st.text_input("Claim ID", "CLM20260001")
+            patient_id = st.text_input("Patient ID", "PAT10001")
+            patient_name = st.text_input("Patient Name", "John Doe")
+            dob = st.date_input("Date of Birth")
+            gender = st.selectbox("Gender", ["Male", "Female", "Other"])
 
-    with col2:
-        ctms_study_status = st.selectbox(
-            "Study Status", ["Active", "Completed", "Paused", "Closed"]
+        with col2:
+            service_date = st.date_input("Service Date")
+            total_claim_amount = st.number_input(
+                "Total Claim Amount", min_value=0.0, value=500.0
+            )
+
+        st.divider()
+        st.header("Insurance Information")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            insurance_provider_name = st.text_input(
+                "Insurance Provider", "Blue Cross Blue Shield"
+            )
+            policy_number = st.text_input("Policy Number", "POL987654321")
+            group_number = st.text_input("Group Number", "GRP10001")
+
+        with col2:
+            member_id = st.text_input("Member ID", "MEM123456789")
+            authorization_number = st.text_input(
+                "Authorization Number", "AUTH567890"
+            )
+
+        st.divider()
+        st.header("Provider Information")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            provider_id = st.text_input("Provider ID", "PRV10001")
+            provider_name = st.text_input("Provider Name", "Dr. Sarah Johnson")
+
+        with col2:
+            specialty = st.text_input("Specialty", "Cardiology")
+            facility_name = st.text_input(
+                "Facility Name", "City Heart Medical Center"
+            )
+
+        st.divider()
+        st.header("Diagnosis Codes")
+        diagnosis_count = st.number_input(
+            "Number of Diagnosis Codes", min_value=1, max_value=10, value=2
         )
-        investigator_name = st.text_input("Principal Investigator", "Dr. John Smith")
+        diagnosis_codes = []
 
-    st.divider()
-    st.subheader("Site Information")
-    col1, col2 = st.columns(2)
+        for i in range(diagnosis_count):
+            st.subheader(f"Diagnosis {i + 1}")
+            c1, c2 = st.columns(2)
+            with c1:
+                code = st.text_input(
+                    f"Diagnosis Code {i + 1}",
+                    value="I10" if i == 0 else "E11.9",
+                    key=f"dcode{i}",
+                )
+            with c2:
+                description = st.text_input(
+                    f"Description {i + 1}",
+                    value=(
+                        "Essential Hypertension"
+                        if i == 0
+                        else "Type 2 Diabetes Mellitus Without Complications"
+                    ),
+                    key=f"ddesc{i}",
+                )
+            diagnosis_codes.append({"code": code, "description": description})
 
-    with col1:
-        site_id = st.text_input("Site ID", "SITE-101")
-        site_name = st.text_input("Site Name", "Apollo Research Center")
-
-    with col2:
-        ctms_site_status = st.selectbox(
-            "Site Status", ["Active", "Closed", "Suspended"]
+        st.divider()
+        st.header("Procedure Codes")
+        procedure_count = st.number_input(
+            "Number of Procedure Codes", min_value=1, max_value=20, value=3
         )
-        last_monitoring_visit_date = st.date_input("Last Monitoring Visit")
+        procedure_codes = []
+        defaults = [
+            ("99214", "Office or Outpatient Visit", 1, 250),
+            ("93000", "Electrocardiogram Complete", 1, 150),
+            ("80053", "Comprehensive Metabolic Panel", 1, 100),
+        ]
 
-    st.divider()
-    st.subheader("Subject Metrics")
-    c1, c2, c3, c4 = st.columns(4)
-    screened_subjects = c1.number_input("Screened", value=220)
-    enrolled_subjects = c2.number_input("Enrolled", value=180)
-    randomized_subjects = c3.number_input("Randomized", value=170)
-    dropout_subjects = c4.number_input("Dropouts", value=10)
+        for i in range(procedure_count):
+            st.subheader(f"Procedure {i + 1}")
+            p1, p2 = st.columns(2)
+            default = defaults[i] if i < len(defaults) else ("", "", 1, 0)
+            with p1:
+                code = st.text_input(
+                    f"Procedure Code {i + 1}", value=default[0], key=f"pcode{i}"
+                )
+                units = st.number_input(
+                    f"Units {i + 1}",
+                    min_value=1,
+                    max_value=20,
+                    value=default[2],
+                    key=f"units{i}",
+                )
+            with p2:
+                description = st.text_input(
+                    f"Procedure Description {i + 1}",
+                    value=default[1],
+                    key=f"pdesc{i}",
+                )
+                charge_amount = st.number_input(
+                    f"Charge Amount {i + 1}",
+                    min_value=0.0,
+                    value=float(default[3]),
+                    key=f"amt{i}",
+                )
+            procedure_codes.append(
+                {
+                    "code": code,
+                    "description": description,
+                    "units": units,
+                    "charge_amount": charge_amount,
+                }
+            )
 
-    st.divider()
-    st.subheader("Monitoring Metrics")
-    col1, col2, col3 = st.columns(3)
-    monitoring_findings = col1.number_input("Monitoring Findings", value=12)
-    major_findings = col2.number_input("Major Findings", value=3)
-    minor_findings = col3.number_input("Minor Findings", value=8)
+        st.divider()
+        notes = st.text_area(
+            "Clinical Notes",
+            "Follow-up visit for hypertension and diabetes management. "
+            "ECG and laboratory tests performed.",
+        )
+        submitted = st.form_submit_button(
+            "Process Claim", use_container_width=True
+        )
 
-    col1, col2, col3 = st.columns(3)
-    critical_findings = col1.number_input("Critical Findings", value=1)
-    monitoring_frequency_days = col2.number_input("Monitoring Frequency", value=30)
-    days_since_last_visit = col3.number_input("Days Since Last Visit", value=39)
-
-    st.divider()
-    st.subheader("Compliance")
-    c1, c2, c3 = st.columns(3)
-    compliance_score = c1.slider("Compliance Score", 0, 100, 85)
-    informed_consent_compliance = c2.slider("Informed Consent %", 0, 100, 95)
-    training_completion_rate = c3.slider("Training %", 0, 100, 92)
-    source_data_verification_rate = st.slider("SDV %", 0, 100, 88)
-
-    st.divider()
-    st.subheader("Risk Indicators")
-    c1, c2, c3 = st.columns(3)
-    adverse_events = c1.number_input("Adverse Events", value=12)
-    serious_adverse_events = c2.number_input("Serious AE", value=2)
-    suspected_unexpected_serious_adverse_reactions = c3.number_input("SUSAR", value=1)
-
-    c1, c2, c3 = st.columns(3)
-    protocol_deviations = c1.number_input("Protocol Deviations", value=8)
-    major_protocol_deviations = c2.number_input("Major Protocol Deviations", value=3)
-    minor_protocol_deviations = c3.number_input("Minor Protocol Deviations", value=5)
-
-    c1, c2, c3 = st.columns(3)
-    open_queries = c1.number_input("Open Queries", value=25)
-    overdue_queries = c2.number_input("Overdue Queries", value=8)
-    missing_data_points = c3.number_input("Missing Data", value=15)
-
-    c1, c2 = st.columns(2)
-    key_risk_indicators_triggered = c1.number_input("KRI Triggered", value=4)
-    quality_tolerance_limit_breaches = c2.number_input("QTL Breaches", value=2)
-    risk_indicator_score = st.slider("Risk Score", 0, 100, 78)
-
-    return {
-        "study_id": study_id,
-        "study_name": study_name,
-        "country": country,
-        "ctms_study_status": ctms_study_status,
-        "investigator_name": investigator_name,
-        "site_id": site_id,
-        "site_name": site_name,
-        "ctms_site_status": ctms_site_status,
-        "last_monitoring_visit_date": str(last_monitoring_visit_date),
-        "screened_subjects": screened_subjects,
-        "enrolled_subjects": enrolled_subjects,
-        "randomized_subjects": randomized_subjects,
-        "dropout_subjects": dropout_subjects,
-        "monitoring_findings": monitoring_findings,
-        "major_findings": major_findings,
-        "minor_findings": minor_findings,
-        "critical_findings": critical_findings,
-        "monitoring_frequency_days": monitoring_frequency_days,
-        "days_since_last_visit": days_since_last_visit,
-        "compliance_score": compliance_score,
-        "informed_consent_compliance": informed_consent_compliance,
-        "training_completion_rate": training_completion_rate,
-        "source_data_verification_rate": source_data_verification_rate,
-        "adverse_events": adverse_events,
-        "serious_adverse_events": serious_adverse_events,
-        "suspected_unexpected_serious_adverse_reactions": suspected_unexpected_serious_adverse_reactions,
-        "protocol_deviations": protocol_deviations,
-        "major_protocol_deviations": major_protocol_deviations,
-        "minor_protocol_deviations": minor_protocol_deviations,
-        "open_queries": open_queries,
-        "overdue_queries": overdue_queries,
-        "missing_data_points": missing_data_points,
-        "key_risk_indicators_triggered": key_risk_indicators_triggered,
-        "quality_tolerance_limit_breaches": quality_tolerance_limit_breaches,
-        "risk_indicator_score": risk_indicator_score,
+    payload = {
+        "claim_id": claim_id,
+        "patient_id": patient_id,
+        "patient_name": patient_name,
+        "date_of_birth": str(dob),
+        "gender": gender,
+        "service_date": str(service_date),
+        "insurance": {
+            "provider_name": insurance_provider_name,
+            "policy_number": policy_number,
+            "group_number": group_number,
+            "member_id": member_id,
+            "authorization_number": authorization_number,
+        },
+        "provider": {
+            "provider_id": provider_id,
+            "provider_name": provider_name,
+            "specialty": specialty,
+            "facility_name": facility_name,
+        },
+        "diagnosis_codes": diagnosis_codes,
+        "procedure_codes": procedure_codes,
+        "total_claim_amount": total_claim_amount,
+        "notes": notes,
     }
+    return submitted, payload
